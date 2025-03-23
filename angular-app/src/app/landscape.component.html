@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HigherOrLower - Inicio de Sesión</title>
+        <link rel="stylesheet" href="landscape.component.css">
+    </head>
+    <body class="background">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="left-section">
+                <h1>↑↓ Higher Or Lower</h1>
+                <p>¡Adivina qué serie tiene mayor o menor puntuación!</p>
+            </div>
+            <div class="divider">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="right-section">
+                <form>
+                    <input type="text" id="username" placeholder="Nombre de Usuario">
+                    <input type="password" id="password" placeholder="Contraseña">
+                    <div class="form-actions">
+                        <a routerLink="/crear-cuenta" class="crear-cuenta">Crear cuenta</a>
+                        <button>Iniciar Sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
