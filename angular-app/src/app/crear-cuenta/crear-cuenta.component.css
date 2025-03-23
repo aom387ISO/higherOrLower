@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.container {
+    display: flex;
+    width: 1000%;
+    max-width: 100%;
+    background: transparent;
+    overflow: hidden;
+}
+
+.left-section {
+    width: 100%;
+    text-align: center;
+    padding: 100px;
+    text-shadow: -2px -2px 0 black,  
+    2px -2px 0 black,
+    -2px 2px 0 black,
+    2px 2px 0 black;
+}
+
+.left-section h1 {
+    white-space: nowrap;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10%;
+}
+
+.left-section p {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.divider {
+    width: 16px;
+    height: auto;
+    background: white;
+    border-radius: 12px;
+    margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .divider {
+        display: none; /* Oculta la línea divisoria en móviles */
+    }
+}
+
+
+.right-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-shadow: -2px -2px 0 black,  
+    2px -2px 0 black,
+    -2px 2px 0 black,
+    2px 2px 0 black;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: white;
+    color: black;
+    font-size: 16px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.actions a {
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.actions button {
+    background: green;
+    color: white;
+    border: none;
+    padding: 20px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.actions button:hover {
+    background: darkgreen;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.form-actions button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+
+.crear-cuenta {
+    text-decoration: none;
+    color: white; 
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px; 
+    font-size: 18px;
+}
+
+.crear-cuenta:hover {
+    text-decoration: underline;
+}
+
+
+.form input {
+    display: block;
+    width: 100%; 
+    margin-bottom: 10px;
+}
+
+.right-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.right-section input {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px; 
+    margin: 10px 0; /* Espaciado entre los inputs */
+    font-size: 18px; /* Tamaño del texto */
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: white;
+    color: black;
+}
+
+.right-section button {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px; 
+    font-size: 18px; 
+    margin-top: 10px; 
+    border-radius: 5px;
+    border: none;
+    background: white; 
+    color: #007BFF; /* Color de texto */
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.right-section button:hover {
+    background: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+.background {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/login_background.jpg');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: x;
+    animation: moveBackground 40s linear infinite;
+  }
+
+  @keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 200% 0; /* Mueve la imagen hacia la derecha. Si la quiero hacia la izquierda sería poner un - */
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); 
+    z-index: -1; /* Asegura que esté encima del fondo y no las letras*/
+}

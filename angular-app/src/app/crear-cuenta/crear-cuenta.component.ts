@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-crear-cuenta',
+  standalone: true,
   imports: [],
   templateUrl: './crear-cuenta.component.html',
-  styleUrl: './crear-cuenta.component.css'
+  styleUrls: ['./crear-cuenta.component.css']
 })
 export class CrearCuentaComponent {
 
