@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    height: auto;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .sidebar {
+    width: 8%;
+    background-color: #656565;
+    padding: 20px;
+    border-right: 1px solid #6f6f6f;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin: 20px 0;
+  }
+  
+  .sidebar-button {
+    width: 40px; 
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+  }
+  
+  .sidebar-button.home {
+    background-image: url('../assets/home_icon.png');
+      }
+  
+  .sidebar-button.stats {
+    background-image: url('../assets/stats_icon.png');
+  }
+  
+  .sidebar-button.settings {
+    background-image: url('../assets/settings_icon.png');
+  }
+
+  .sidebar-button:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+  
+  .main-content {
+    width: 90%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(113, 113, 113);
+  }
+
+  .start-button {
+    background-color: #ffffff; 
+    color: #000000; 
+    border: 1px solid #000000;
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    border-radius: 5px;
+    transition: transform 0.2s, background-color 0.3s; 
+  }
+  
+  .start-button:hover {
+    transform: scale(1.05); 
+    background-color: #f0f0f0;
+  }

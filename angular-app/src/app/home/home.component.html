@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Or Lower - Home</title>
+    <link rel="stylesheet" href="home.component.css">
+</head>
+<div class="container">
+    <div class="sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a (click)="goToHome($event)" class="sidebar-button home" aria-label="Home"></a>
+            </li>
+            <li>
+                <a (click)="goToStats()" class="sidebar-button stats" aria-label="Stats"></a>    
+            </li>
+            <li>
+                <a (click)="goToSettings()" class="sidebar-button settings" aria-label="Settings"></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <div class="main-content">
+        <button class="start-button">Empezar</button>
+    </div>
+  </div>

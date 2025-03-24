@@ -20,12 +20,13 @@ body {
     max-width: 100%;
     background: transparent;
     overflow: hidden;
+    justify-content: center;
 }
 
 .left-section {
     width: 100%;
     text-align: center;
-    padding: 40px;
+    padding: 100px;
     text-shadow: -2px -2px 0 black,  
     2px -2px 0 black,
     -2px 2px 0 black,
@@ -144,10 +145,25 @@ body {
     text-align: center;
     width: 100%;
     margin-top: 10px; 
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .crear-cuenta:hover {
+    text-decoration: underline;
+}
+
+.sin-cuenta {
+    text-decoration: none;
+    color: white; 
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 6%; 
+    font-size: 18px;
+}
+
+.sin-cuenta:hover {
     text-decoration: underline;
 }
 
@@ -179,6 +195,26 @@ body {
 }
 
 .right-section button {
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    padding: 18px; 
+    font-size: 18px; 
+    margin-top: 10px; 
+    border-radius: 10px;
+    border: none;
+    background: white; 
+    color: #007BFF; /* Color de texto */
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.right-section button:hover {
+    background: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+.button {
     width: 100%;
     max-width: 300px;
     padding: 15px; 
@@ -192,7 +228,7 @@ body {
     transition: background 0.3s ease-in-out;
 }
 
-.right-section button:hover {
+.button:hover {
     background: #0056b3; /* Color más oscuro al pasar el ratón */
 }
 
@@ -203,7 +239,7 @@ body {
     background-size: auto 100%;
     background-position: center;
     background-repeat: x;
-    animation: moveBackground 40s linear infinite;
+    animation: moveBackground 45s linear infinite;
   }
 
   @keyframes moveBackground {
