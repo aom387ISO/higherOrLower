@@ -1,0 +1,128 @@
+.container {
+    display: flex;
+    height: auto;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .sidebar {
+    width: 8%;
+    background-color: #656565;
+    padding: 20px;
+    border-right: 1px solid #6f6f6f;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin: 20px 0;
+  }
+  
+  .sidebar-button {
+    width: 40px; 
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+  }
+  
+  .sidebar-button.home {
+    background-image: url('../assets/home_icon.png');
+      }
+  
+  .sidebar-button.stats {
+    background-image: url('../assets/stats_icon.png');
+  }
+  
+  .sidebar-button.settings {
+    background-image: url('../assets/settings_icon.png');
+  }
+
+  .sidebar-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+  
+  .main-content {
+    width: 90%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #323232;
+    color: #ffffff;
+  }
+
+  .main-content {
+    padding: 20px;
+}
+
+.user-info {
+    margin-bottom: 30px;
+}
+
+.email-container {
+    display: center;
+    align-items: center;
+}
+
+.eye-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    align-items: center;
+}
+
+.password-form {
+    max-width: 400px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #ffffff;
+    color: #007BFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
