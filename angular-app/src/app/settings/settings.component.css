@@ -41,19 +41,19 @@
   }
   
   .sidebar-button.home {
-    background-image: url('../assets/home_icon_white.png');
+    background-image: url('../assets/static/home_icon_white.png');
       }
   
   .sidebar-button.stats {
-    background-image: url('../assets/stats_icon_white.png');
+    background-image: url('../assets/static/stats_icon_white.png');
   }
   
   .sidebar-button.settings {
-    background-image: url('../assets/settings_icon_white.png');
+    background-image: url('../assets/static/settings_icon_white.png');
   }
 
   .sidebar-button.logout {
-    background-image: url('../assets/door_icon_white.png');
+    background-image: url('../assets/static/door_icon_white.png');
   }
 
   .sidebar-button:hover {
@@ -132,4 +132,13 @@
 
 .submit-button:hover {
     background-color: #0056b3;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px auto;
 }

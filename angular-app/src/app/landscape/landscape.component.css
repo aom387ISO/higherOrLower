@@ -235,7 +235,7 @@ body {
 .background {
     width: 100%;
     height: 100vh;
-    background-image: url('../assets/login_background.jpg');
+    background-image: url('../assets/static/login_background.jpg');
     background-size: auto 100%;
     background-position: center;
     background-repeat: x;
