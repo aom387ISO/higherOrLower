@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { LandscapeComponent } from './landscape.component';
+import { LandscapeComponent } from './landscape/landscape.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { HomeComponent } from './home/home.component';
 import { StatsComponent } from './stats/stats.component';

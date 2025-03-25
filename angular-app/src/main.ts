@@ -1,7 +1,7 @@
 
 import { Routes } from '@angular/router';
 import { CrearCuentaComponent } from './app/crear-cuenta/crear-cuenta.component';
-import { LandscapeComponent } from './app/landscape.component';
+import { LandscapeComponent } from './app/landscape/landscape.component';
 import { HomeComponent } from './app/home/home.component';
 import { StatsComponent } from './app/stats/stats.component';
 import { SettingsComponent } from './app/settings/settings.component';

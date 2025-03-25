@@ -7,7 +7,7 @@
   }
   
   .sidebar {
-    width: 6%;
+    width: 5%;
     background-color: #656565;
     padding: 20px;
     border-right: 1px solid #6f6f6f;
@@ -50,6 +50,10 @@
   
   .sidebar-button.settings {
     background-image: url('../assets/settings_icon_white.png');
+  }
+
+  .sidebar-button.logout {
+    background-image: url('../assets/door_icon_white.png');
   }
 
   .sidebar-button:hover {
