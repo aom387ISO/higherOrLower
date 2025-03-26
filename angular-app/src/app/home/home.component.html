@@ -1,6 +1,23 @@
 <div class="container">
   <app-sidebar></app-sidebar>
-    <div class="main-content">
-        <button class="start-button">Empezar</button>
+  <button class="start-button" *ngIf="!gameStart" (click)="startGame()">Empezar</button>
+
+  <div *ngIf="gameStart" class="game-container">
+    <div class="manga-card" (click)="chooseManga('manga')">
+      <h2>{{ manga?.title || 'Cargando...' }}</h2>
+      <img [src]="manga?.images?.jpg?.image_url" alt="Manga " *ngIf="manga?.images">
+      <p>Puntuación: ???</p>
     </div>
+
+    <div class="vs">VS</div>
+
+    <div class="manga-card" (click)="chooseManga('manga2')">
+      <h2>{{ manga2?.title || 'Cargando...' }}</h2>
+      <img [src]="manga2?.images?.jpg?.image_url" alt="Manga 2" *ngIf="manga2?.images">
+      <p>Puntuación: ???</p>
+    </div>
+
+    <p class="message">{{ message }}</p>
+    <p>Puntuación actual: {{ gameScore }}</p>
   </div>
+</div>
