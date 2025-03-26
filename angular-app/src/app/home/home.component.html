@@ -1,27 +1,33 @@
 <div class="container">
   <app-sidebar></app-sidebar>
-  
-  <div class="start-container" *ngIf="!gameStart">
+
+  <div class="start-container" *ngIf="!gameStart && !gameOver">
     <button class="start-button manga-button" (click)="startGame('manga')">Versión Manga</button>
     <button class="start-button anime-button" (click)="startGame('anime')">Versión Anime</button>
   </div>
 
-  <div *ngIf="gameStart" class="game-container">
-    <div class="manga-card" @mangaAnimation (click)="chooseManga('manga')">
-      <h2>{{ manga?.title || 'Cargando...' }}</h2>
-      <img [src]="manga?.images?.jpg?.image_url" alt="Manga " *ngIf="manga?.images">
+  <div *ngIf="gameStart || gameOver" class="game-container">
+    <div class="manga-card" @mangaAnimation (click)="chooseManga('manga')" [class.disabled]="gameOver">
+      <h2>{{ (manga?.title?.length > 45) ? (manga?.title | slice:0:50) + '...' : manga?.title || 'Cargando...' }}</h2>
+      <img [src]="manga?.images?.jpg?.image_url" alt="Manga" *ngIf="manga?.images">
       <p>Puntuación: {{ manga?.score || '???' }}</p>
     </div>
 
-    <div class="manga-card" @mangaAnimation (click)="chooseManga('manga2')">
-      <h2>{{ manga2?.title || 'Cargando...' }}</h2>
+    <div class="manga-card" @mangaAnimation (click)="chooseManga('manga2')" [class.disabled]="gameOver">
+      <h2>{{ (manga2?.title?.length > 45) ? (manga2?.title | slice:0:50) + '...' : manga2?.title || 'Cargando...' }}</h2>
       <img [src]="manga2?.images?.jpg?.image_url" alt="Manga 2" *ngIf="manga2?.images">
-      <p>Puntuación: ???</p> 
+      <p *ngIf="!gameOver || !revealScore">Puntuación: ???</p>
+      <p *ngIf="gameOver && revealScore">Puntuación: {{ manga2?.score || '???' }}</p>
     </div>
 
     <div class="game-info">
       <p>Puntuación actual: {{ gameScore }}</p>
-      <p class="message" *ngIf="gameScore !== 0">{{ message }}</p>
-     </div>
+      <p class="message" *ngIf="gameScore !== 0 || gameOver">{{ message }}</p>
+    </div>
+
+    <div class="game-over-options" *ngIf="gameOver && revealScore">
+      <button class="start-button restart-button" (click)="restartGame()">Reiniciar</button>
+      <button class="start-button exit-button" (click)="exitGame()">Salir</button>
+    </div>
   </div>
 </div>

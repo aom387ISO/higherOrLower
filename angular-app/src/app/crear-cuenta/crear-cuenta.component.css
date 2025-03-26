@@ -64,10 +64,21 @@ body {
 }
 
 @media (max-width: 768px) {
-    .divider {
-        display: none; /* Oculta la línea divisoria en móviles */
+    .container {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
-}
+  
+    .left-section, .right-section {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .divider {
+      display: none;
+    }
+  }
 
 
 .right-section {
