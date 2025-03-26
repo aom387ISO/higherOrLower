@@ -6,59 +6,6 @@
     margin: 0;
   }
   
-  .sidebar {
-    width: 5%;
-    background-color: #0076d0;
-    padding: 20px;
-    border-right: 1px solid #6f6f6f;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar li {
-    margin: 20px 0;
-  }
-  
-  .sidebar-button {
-    width: 40px; 
-    height: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    display: block;
-  }
-  
-  .sidebar-button.home {
-    background-image: url('../assets/static/home_icon_white.png');
-      }
-  
-  .sidebar-button.stats {
-    background-image: url('../assets/static/stats_icon_white.png');
-  }
-  
-  .sidebar-button.settings {
-    background-image: url('../assets/static/settings_icon_white.png');
-  }
-
-  .sidebar-button.logout {
-    background-image: url('../assets/static/door_icon_white.png');
-  }
-
-  .sidebar-button:hover {
-    transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
-  }
-  
   .icon {
     width: 40px;
     height: 40px;

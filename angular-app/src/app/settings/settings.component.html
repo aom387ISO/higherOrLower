@@ -1,50 +1,51 @@
 <body>    
     <div class="container">
-        <div class="sidebar">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/home" class="sidebar-button home" aria-label="Home"></a>
-                    </li>
-                    <li>
-                        <a href="/stats" class="sidebar-button stats" aria-label="Stats"></a>    
-                    </li>
-                    <li>
-                        <a href="/settings" class="sidebar-button settings" aria-label="Settings"></a>
-                    </li>
-                    <li>
-                        <a href="/" class="sidebar-button logout" aria-label="LogOut"></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <app-sidebar></app-sidebar>
         <div class="main-content">
             <div class="user-info">
-                <img [src]="profileImage" alt="Foto de perfil" class="profile-picture">
+                <img [src]="profileImage" alt="Foto de perfil" class="profile-picture" (click)="openPictureSettings()">
+                <div *ngIf="showPopup" class="popup" (click)="closePictureSettings()">
+                    <div class="popup-content" (click)="$event.stopPropagation()">
+                        <h3>Selecciona una foto de perfil</h3>
+                        <div class="profile-pictures">
+                            <img *ngFor="let picture of availablePictures" 
+                                 [src]="picture" 
+                                 alt="Foto de perfil" 
+                                 class="profile-option" 
+                                 (click)="selectProfilePicture(picture)">
+                        </div>
+                        <button class="close-button" (click)="closePictureSettings()">Cerrar</button>
+                    </div>
+                </div>                
                 <h2>Bienvenido, <span id="username">[Nombre de usuario]</span></h2>
                 <div class="email-container">
-                    <p id="email">usuarioejemplo.com</p>
+                    <p id="score">¡Tu mejor puntuación hasta ahora es 10!</p>
                 </div>
             </div>
 
-            <div class="password-form">
-                <h2>Cambiar Contraseña</h2>
-                <form id="changePasswordForm">
-                    <div class="form-group">
-                        <label for="currentPassword">Contraseña Actual:</label>
-                        <input type="password" id="currentPassword" name="currentPassword" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="newPassword">Nueva Contraseña:</label>
-                        <input type="password" id="newPassword" name="newPassword" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="repeatPassword">Repetir Contraseña:</label>
-                        <input type="password" id="repeatPassword" name="repeatPassword" required>
-                    </div>
-                    <button type="submit" class="submit-button">Actualizar Contraseña</button>
-                </form>
+            <button class="open-password-popup" (click)="openPasswordSettings()">Cambiar Contraseña</button>
+            <div *ngIf="showPasswordPopup" class="popup" (click)="closePasswordSettings()">
+                <div class="popup-content-password" (click)="$event.stopPropagation()">
+                    <h3>Cambiar Contraseña</h3>
+                    <form id="changePasswordForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Contraseña Actual:</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">Nueva Contraseña:</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="repeatPassword">Repetir Contraseña:</label>
+                            <input type="password" id="repeatPassword" name="repeatPassword" required>
+                        </div>
+                        <button type="submit" class="submit-button">Actualizar Contraseña</button>
+                    </form>
+                    <button class="close-button" (click)="closePasswordSettings()">Cerrar</button>
+                </div>
             </div>
+            
         </div>
     </div>
 </body>
