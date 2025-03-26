@@ -1,41 +1,32 @@
 <div class="container">
     <app-sidebar></app-sidebar>
     <div class="main-content">
-        <div class="leaderboard-container">
-            <h2>Mejores jugadores</h2>
-            <div class="leaderboard">
-                <div class="leaderboard-entry">
-                    <span class="position">1</span>
-                    <img [src]="profileImage" alt="Foto de perfil" class="profile-picture">
-                    <span class="username">UserName1</span>
-                    <span class="score">1000</span>
-                </div>
-                <div class="leaderboard-entry">
-                    <span class="position">2</span>
-                    <img [src]="profileImage" alt="Foto de perfil" class="profile-picture">
-                    <span class="username">UserName2</span>
-                    <span class="score">999</span>
-                </div>
-                <div class="leaderboard-entry">
-                    <span class="position">3</span>
-                    <img [src]="profileImage" alt="Foto de perfil" class="profile-picture">
-                    <span class="username">UserName3</span>
-                    <span class="score">900</span>
-                </div>
-                <div class="leaderboard-entry">
-                    <span class="position">4</span>
-                    <img [src]="profileImage" alt="Foto de perfil" class="profile-picture">
-                    <span class="username">UserName4</span>
-                    <span class="score">800</span>
-                </div>
-                <div class="leaderboard-entry">
-                    <span class="position">5</span>
-                    <img [src]="profileImage" alt="Foto de perfil" class="profile-picture">
-                    <span class="username">UserName5</span>
-                    <span class="score">700</span>
-                </div>
-                
-            </div>
-        </div>               
+      <div class="leaderboard-container">
+        <h2>Mejores jugadores</h2>
+  
+        <div class="mode-selector">
+          <button 
+            [class.active]="selectedMode === 'Manga'" 
+            (click)="selectMode('Manga')"
+            class="mode-button">
+            Manga
+          </button>
+          <button 
+            [class.active]="selectedMode === 'Anime'" 
+            (click)="selectMode('Anime')"
+            class="mode-button">
+            Anime
+          </button>
+        </div>
+  
+        <div class="leaderboard">
+          <div class="leaderboard-entry" *ngFor="let entry of getCurrentLeaderboard()">
+            <span class="position">{{ entry.position }}</span>
+            <img [src]="entry.profileImage" alt="Foto de perfil" class="profile-picture">
+            <span class="username">{{ entry.username }}</span>
+            <span class="score">{{ entry.score }}</span>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>

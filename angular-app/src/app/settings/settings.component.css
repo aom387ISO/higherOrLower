@@ -75,7 +75,7 @@
     border-radius: 4px;
     cursor: pointer;
     align-items: center;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .submit-button:hover {
@@ -147,6 +147,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .close-button:hover {
@@ -173,6 +174,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .open-password-popup:hover {

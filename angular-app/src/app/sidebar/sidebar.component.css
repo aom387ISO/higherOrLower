@@ -1,5 +1,5 @@
 :host {
-    width: 5%;
+    width: 3%;
     height: 100vh;
     position: fixed;
     background-color: #0076d0;
@@ -7,6 +7,7 @@
     border-right: 1px solid #6f6f6f;
     display: flex;
     justify-content: center;
+    z-index: 10;
   
   
    nav ul {
@@ -38,19 +39,19 @@
   }
   
   .sidebar-button.home {
-    background-image: url('../assets/static/home_icon_white.png');
+    background-image: url('../../../public/assets/static/home_icon_white.png');
       }
   
   .sidebar-button.stats {
-    background-image: url('../assets/static/stats_icon_white.png');
+    background-image: url('../../../public/assets/static/stats_icon_white.png');
   }
   
   .sidebar-button.settings {
-    background-image: url('../assets/static/settings_icon_white.png');
+    background-image: url('../../../public/assets/static/settings_icon_white.png');
   }
 
   .sidebar-button.logout {
-    background-image: url('../assets/static/door_icon_white.png');
+    background-image: url('../../../public/assets/static/door_icon_white.png');
   }
 
   .sidebar-button:hover {
