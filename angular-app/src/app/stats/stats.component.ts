@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stats',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [],
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })
-export class StatsComponent {
+export class StatsComponent implements OnInit {
   //constructor(private router: Router) {}
   content: string = "";
   count: number = 0;
@@ -23,6 +22,8 @@ export class StatsComponent {
 
   ngOnInit(): void{
     console.log("Hola");
+    console.log("Hola");
+    this.setMessage1();
   }
   goToHome(event: Event) {
     event.preventDefault();
@@ -53,4 +54,8 @@ export class StatsComponent {
     console.log('Navegando a Settings');
   }
 
-}
+  public showText(){
+    return "Hola";
+  }
+
+} 

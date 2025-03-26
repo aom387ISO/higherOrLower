@@ -1,4 +1,4 @@
-
+/*
 import { Routes } from '@angular/router';
 import { CrearCuentaComponent } from './app/crear-cuenta/crear-cuenta.component';
 import { LandscapeComponent } from './app/landscape/landscape.component';
@@ -13,7 +13,10 @@ export const routes: Routes = [
   { path: 'stats', component : StatsComponent },
   { path: 'settings', component : SettingsComponent }
 ];
-/*
+*/
+
+
+
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app/app.component';
@@ -22,4 +25,3 @@ import { routes } from './app/app.routes';
 bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 }).catch(err => console.error(err));
-*/

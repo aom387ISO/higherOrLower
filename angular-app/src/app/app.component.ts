@@ -11,4 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Higher Or Lower';
+
+  prueba(){
+    console.log('prueba');
+  }
 }
