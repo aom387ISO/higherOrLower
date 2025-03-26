@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./crear-cuenta.component.css']
 })
 export class CrearCuentaComponent {
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  password2: string = '';
 
+  register() {
+    if (this.password !== this.password2) {
+      alert('Las contraseñas deben ser iguales');
+      return;
+    }
+  }
 }

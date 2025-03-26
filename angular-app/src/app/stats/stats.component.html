@@ -3,13 +3,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="/home" class="sidebar-button home" aria-label="Home"></a>
+                        <a class="sidebar-button home" (click)="goToHome($event)" aria-label="Settings"></a>
                     </li>
                     <li>
-                        <a href="/stats" class="sidebar-button stats" aria-label="Stats"></a>    
+                        <a class="sidebar-button stats" (click)="goToStats()" aria-label="Settings"></a>
                     </li>
                     <li>
-                        <a class="sidebar-button settings" aria-label="Settings" ></a>
+                        <a class="sidebar-button settings" (click)="goToSettings()" aria-label="Settings"></a>
                     </li>
                     <li>
                         <a href="/" class="sidebar-button logout" aria-label="LogOut"></a>
@@ -21,6 +21,8 @@
             <div class="leaderboard-container">
                 <h2 (click)="pepe()">Leaderboard</h2>
                 <button (click)="pepe()">Settings</button>
+                <button (click)="goToHome($event)">Settings</button>
+                <button (click)="setMessage1()"> Set Message # 1</button>
                 <table class="leaderboard">
                 </table>
             </div>               

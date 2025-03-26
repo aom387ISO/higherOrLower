@@ -21,6 +21,7 @@ body {
     background: transparent;
     overflow: hidden;
     justify-content: center;
+    z-index: 2;
 }
 
 .left-section {
@@ -240,6 +241,12 @@ body {
     background-position: center;
     background-repeat: x;
     animation: moveBackground 45s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
   }
 
   @keyframes moveBackground {
@@ -252,11 +259,11 @@ body {
   }
 
   .overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.75); 
-    z-index: -1; /* Asegura que esté encima del fondo y no las letras*/
+    z-index: 1; /* Asegura que esté encima del fondo y no las letras*/
 }
