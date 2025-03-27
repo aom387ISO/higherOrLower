@@ -35,9 +35,17 @@ router.post('/register', async (req, res) => {
         console.log("Usuario creado")
         await newUser.save();
         console.log("Se ha hecho el save")
+        
+        const profilePicture = new ProfilePicture({
+            picture: 'profile_1.png',
+            idUser: savedUser._id
+        });
+
+        await profilePicture.save();
+
         res.status(201).json({ 
             message: 'Usuario registrado exitosamente',
-            user: { username, email }
+            user: { username, email, profilePicture: profilePicture.picture }
         });
     } catch (error) {
         console.error('Error en registro:', error);

@@ -12,11 +12,11 @@
             </div>
             <div class="right-section">
                 <form>
-                    <input type="text" id="username" placeholder="Nombre de Usuario">
-                    <input type="password" id="password" placeholder="Contraseña">
+                    <input type="text" id="username" placeholder="Nombre de Usuario" [(ngModel)]="username" name="username">
+                    <input type="password" id="password" placeholder="Contraseña" [(ngModel)]="password" name="password">
                     <div class="form-actions">
                         <a href="/crear-cuenta" class="crear-cuenta">Crear cuenta</a>
-                        <button>Iniciar Sesión</button>
+                        <button type="button" (click)="login()">Iniciar Sesión</button>
                     </div>
                 </form>
                 <a href="/home" class="sin-cuenta">Continuar sin registrarse</a>

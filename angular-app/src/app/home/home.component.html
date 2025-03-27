@@ -1,6 +1,6 @@
 <div class="container">
-  <app-sidebar></app-sidebar>
-
+  <app-sidebar [user]="user"></app-sidebar>
+  
   <div class="start-container" *ngIf="!gameStart && !gameOver">
     <button class="start-button manga-button" (click)="startGame('manga')">Versión Manga</button>
     <button class="start-button anime-button" (click)="startGame('anime')">Versión Anime</button>

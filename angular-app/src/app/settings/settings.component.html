@@ -1,6 +1,6 @@
 <body>    
     <div class="container">
-        <app-sidebar></app-sidebar>
+        <app-sidebar [user]="user"></app-sidebar>
         <div class="main-content">
             <div class="user-info">
                 <img [src]="profileImage" alt="Foto de perfil" class="profile-picture" (click)="openPictureSettings()">

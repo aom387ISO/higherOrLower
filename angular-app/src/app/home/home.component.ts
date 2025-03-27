@@ -30,6 +30,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
+  
+  user: any = null;
 
   manga: any = null;
   manga2: any = null;
@@ -42,6 +44,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Home Component');
+    this.user = history.state.user || JSON.parse(localStorage.getItem('user') || '{}');
+    console.log('Usuario recibido:', this.user);
   }
 
   startGame(gameType: 'manga' | 'anime') {

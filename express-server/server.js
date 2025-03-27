@@ -4,12 +4,16 @@ const app = express();
 const PORT = 3000;
 const initializeDatabase = require('./mongo-init');
 const registerRouter = require('./endpoints/register');
+const loginRouter = require('./endpoints/login');
+const changeIconRouter = require('./endpoints/changeIcon');
+//const changePasswordRouter = require('./endpoints/changePassword');
 const cors = require('cors');
 
 app.use(cors({
     origin: 'http://localhost:4200', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type','Authorization'],
+    additionalHeaders: ['Accept', 'Access-Control-Allow-Origin', 'Referer', 'User-Agent'] // should contain list of request headers
 }));
 
 app.use(express.json());
@@ -17,9 +21,11 @@ app.use(express.json());
 app.get('/api', (req, res) => {
     res.send('Hello from Express + MongoDB!');
 });
+
 app.use('/api', registerRouter);
-
-
+app.use('/api', loginRouter);
+app.use('/api', changeIconRouter);
+//app.use('/api', changePasswordRouter);
 
 async function startServer() {
     try {

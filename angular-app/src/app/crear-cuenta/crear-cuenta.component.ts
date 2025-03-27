@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cuenta',
@@ -15,7 +16,7 @@ export class CrearCuentaComponent {
   email: string = '';
   password: string = '';
   password2: string = '';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   register() {
     console.log('Datos:', this.username, this.email, this.password, this.password2);
@@ -45,6 +46,7 @@ export class CrearCuentaComponent {
           this.email = '';
           this.password = '';
           this.password2 = '';
+          this.router.navigate(['/home'], { state: { user: response.user } });
         },
         error: (error) => {
           console.error('Error en registro:', error);

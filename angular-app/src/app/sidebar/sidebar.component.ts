@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,25 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  @Input() user: any = null;
+  
+  profilePicture: string = '';
+
   constructor(private router: Router) {}
-  profileImage: string = '';
 
   ngOnInit(): void {
-    this.profileImage = '../assets/profilePictures/profile_1.png';
-    /*setTimeout(() => {
-      this.profileImage = 'https://example.com/user-profile.jpg'
-    }, 1000);*/
+    const pictureName = this.user?.profilePicture || 'profile_1.png'; // Nombre base de la imagen
+    this.profilePicture = `assets/profilePictures/${pictureName}`;
   }
-
+  
   goToHome() {
-    this.router.navigate(['/home']);
-  }
+    console.log('user', this.user);
+    this.router.navigate(['/home'], { state: { user: this.user } });
+    }
 
   goToStats() {
-    this.router.navigate(['/stats']);
+    console.log('user', this.user);
+    this.router.navigate(['/stats'], { state: { user: this.user } });
   }
 
   goToSettings() {
-    this.router.navigate(['/settings']);
+    console.log('user', this.user);
+    this.router.navigate(['/settings'], { state: { user: this.user } });
   }
 }

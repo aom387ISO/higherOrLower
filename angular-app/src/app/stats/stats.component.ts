@@ -18,10 +18,12 @@ interface LeaderboardEntry {
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-  constructor(private router: Router) {}
 
+  user : any = null;
   selectedMode: 'Manga' | 'Anime' = 'Manga';
   profileImage: string = '../assets/profilePictures/profile_1.png';
+
+  constructor(private router: Router) {}
 
   mangaLeaderboard: LeaderboardEntry[] = [
     { position: 1, username: 'UserName1', score: 1000, profileImage: this.profileImage },
@@ -41,6 +43,7 @@ export class StatsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.user = history.state.user || JSON.parse(localStorage.getItem('user') || '{}');
     this.profileImage = '../assets/profilePictures/profile_1.png';
   }
 
