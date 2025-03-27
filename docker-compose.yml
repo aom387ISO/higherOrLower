@@ -22,7 +22,9 @@ services:
     depends_on:
       - express-server
   express-server:
-    image: express:1
+    build:
+      context: ./express-server/
+      dockerfile: ./Dockerfile
     ports:
       - "3000:3000"
     environment:
@@ -36,9 +38,10 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+
+      MONGO_INITDB_DATABASE: mydatabase
 
 volumes:
   mongo-data: 
