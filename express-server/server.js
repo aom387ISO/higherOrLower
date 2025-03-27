@@ -3,12 +3,23 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 3000;
 const initializeDatabase = require('./mongo-init');
+const registerRouter = require('./endpoints/register');
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'http://localhost:4200', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type','Authorization'],
+}));
 
 app.use(express.json());
 
 app.get('/api', (req, res) => {
     res.send('Hello from Express + MongoDB!');
 });
+app.use('/api', registerRouter);
+
+
 
 async function startServer() {
     try {
