@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const ProfilePicture = require('../models/ProfilePicture');
 //const bcrypt = require('bcrypt');
 
 // POST /api/register - Registro de usuario
@@ -33,19 +34,20 @@ router.post('/register', async (req, res) => {
             password: password
         });
         console.log("Usuario creado")
-        await newUser.save();
+        const savedUser = await newUser.save();
         console.log("Se ha hecho el save")
         
-        const profilePicture = new ProfilePicture({
+        const newPicture = new ProfilePicture({
             picture: 'profile_1.png',
             idUser: savedUser._id
         });
 
-        await profilePicture.save();
+        const savedProfilePicture = await newPicture.save();
+        console.log('Imagen de perfil guardada en la base de datos:', savedProfilePicture);
 
         res.status(201).json({ 
             message: 'Usuario registrado exitosamente',
-            user: { username, email, profilePicture: profilePicture.picture }
+            user: { username, email, profilePicture: newPicture.picture }
         });
     } catch (error) {
         console.error('Error en registro:', error);

@@ -6,6 +6,8 @@ const initializeDatabase = require('./mongo-init');
 const registerRouter = require('./endpoints/register');
 const loginRouter = require('./endpoints/login');
 const changeIconRouter = require('./endpoints/changeIcon');
+const updateMangaScoreRouter = require('./endpoints/updateMangaScore');
+const updateAnimeScoreRouter = require('./endpoints/updateAnimeScore');
 //const changePasswordRouter = require('./endpoints/changePassword');
 const cors = require('cors');
 
@@ -25,6 +27,8 @@ app.get('/api', (req, res) => {
 app.use('/api', registerRouter);
 app.use('/api', loginRouter);
 app.use('/api', changeIconRouter);
+app.use('/api', updateMangaScoreRouter);
+app.use('/api', updateAnimeScoreRouter);
 //app.use('/api', changePasswordRouter);
 
 async function startServer() {

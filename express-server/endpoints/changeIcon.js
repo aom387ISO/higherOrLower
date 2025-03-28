@@ -9,7 +9,7 @@ router.put('/changeIcon', async (req, res) => {
         const { username, profileImage } = req.body;
         console.log("username: ", username);
         console.log("profileImage: ", profileImage);
-        if (!req.body.username || !req.body.profilePicture) {
+        if (!req.body.username || !req.body.profileImage) {
             return res.status(400).json({ message: 'Faltan datos' });
         }
 

@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class HomeComponent implements OnInit {
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router, private http: HttpClient) {}
   
   user: any = null;
 
@@ -109,6 +110,24 @@ export class HomeComponent implements OnInit {
       this.message = `Incorrecto. Fin del juego.`;
       this.gameStart = false;
       this.gameOver = true;
+
+      const endpoint = this.gameType === 'manga' ? '/updateMangaScore' : '/updateAnimeScore';
+      const updateData = {
+        username: this.user.username,
+        score: this.gameScore
+      };
+  
+      this.http.put(`http://localhost:3000/api${endpoint}`, updateData)
+      .subscribe({
+        next: (response: any) => {
+          console.log('Puntuación actualizada:', response);
+        },
+        error: (error) => {
+          console.error('Error al actualizar la puntuación:', error);
+          alert(error.error.message || 'Error al actualizar la puntuación');
+        }
+      });
+
       setTimeout(() => {
         this.revealScore = true;
       }, 1000);

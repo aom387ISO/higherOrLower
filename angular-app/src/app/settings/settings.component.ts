@@ -61,10 +61,11 @@ export class SettingsComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           console.log('Foto de perfil actualizada:', response);
-          alert('Foto de perfil actualizada con éxito');
           this.user.profilePicture = pictureName;
 
-          this.router.navigate(['/settings'], { state: { user: this.user } });
+          this.router.navigate(['/home'], { state: { user: this.user } }).then(() => {
+              this.router.navigate(['/settings'], { state: { user: this.user } });
+          });
         },
         error: (error) => {
           console.error('Error al actualizar la foto:', error);
