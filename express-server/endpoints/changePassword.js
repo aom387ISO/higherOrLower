@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 router.put('/changePassword', async (req, res) => {
     try {
@@ -15,11 +16,14 @@ router.put('/changePassword', async (req, res) => {
             return res.status(404).json({ message: 'Usuario no encontrado.' });
         }
 
-        if (user.password !== currentPassword) {
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+        if (!isMatch) {
             return res.status(400).json({ message: 'La contraseña actual es incorrecta.' });
         }
 
-        user.password = newPassword;
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        
+        user.password = hashedPassword;
         await user.save();
 
         res.status(200).json({ message: 'Contraseña actualizada exitosamente.' });
