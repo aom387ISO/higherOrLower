@@ -10,6 +10,8 @@ const changePasswordRouter = require('./endpoints/changePassword');
 const updateMangaScoreRouter = require('./endpoints/updateMangaScore');
 const updateAnimeScoreRouter = require('./endpoints/updateAnimeScore');
 const getUserScoreRouter = require('./endpoints/getUserScore');
+const getMangaLeaderboardRouter = require('./endpoints/getMangaLeaderboard');
+const getAnimeLeaderboardRouter = require('./endpoints/getAnimeLeaderboard');
 const cors = require('cors');
 
 app.use(cors({
@@ -32,6 +34,8 @@ app.use('/api', updateMangaScoreRouter);
 app.use('/api', updateAnimeScoreRouter);
 app.use('/api', getUserScoreRouter);
 app.use('/api', changePasswordRouter);
+app.use('/api', getMangaLeaderboardRouter);
+app.use('/api', getAnimeLeaderboardRouter);
 
 async function startServer() {
     try {

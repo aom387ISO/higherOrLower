@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const ProfilePicture = require('../models/ProfilePicture');
+const bcrypt = require('bcrypt');
 
 router.post('/login', async (req, res) => {
     try {
@@ -17,9 +18,11 @@ router.post('/login', async (req, res) => {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
-        if (password !== user.password) {
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
             return res.status(401).json({ message: 'Contraseña incorrecta' });
         }
+        
         const profilePicture = await ProfilePicture.findOne({ idUser: user._id });
         console.log('ProfilePicture found:', profilePicture);
         

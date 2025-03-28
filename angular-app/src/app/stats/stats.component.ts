@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { HttpClient } from '@angular/common/http';
 
 interface LeaderboardEntry {
   position: number;
@@ -21,30 +22,41 @@ export class StatsComponent implements OnInit {
 
   user : any = null;
   selectedMode: 'Manga' | 'Anime' = 'Manga';
-  profileImage: string = '../assets/profilePictures/profile_1.png';
+  mangaLeaderboard: LeaderboardEntry[] = [];
+  animeLeaderboard: LeaderboardEntry[] = [];
 
-  constructor(private router: Router) {}
-
-  mangaLeaderboard: LeaderboardEntry[] = [
-    { position: 1, username: 'UserName1', score: 1000, profileImage: this.profileImage },
-    { position: 2, username: 'UserName2', score: 999, profileImage: this.profileImage },
-    { position: 3, username: 'UserName3', score: 900, profileImage: this.profileImage },
-    { position: 4, username: 'UserName4', score: 800, profileImage: this.profileImage },
-    { position: 5, username: 'UserName5', score: 700, profileImage: this.profileImage }
-  ];
-
-  // Lista de mejores jugadores para Anime
-  animeLeaderboard: LeaderboardEntry[] = [
-    { position: 1, username: 'Pepé', score: 1000, profileImage: this.profileImage },
-    { position: 2, username: 'Manolo', score: 999, profileImage: this.profileImage },
-    { position: 3, username: 'Ramona', score: 900, profileImage: this.profileImage },
-    { position: 4, username: 'Antonio', score: 800, profileImage: this.profileImage },
-    { position: 5, username: 'Jesús', score: 700, profileImage: this.profileImage }
-  ];
+  constructor(private router: Router, private http : HttpClient) {}
 
   ngOnInit(): void {
     this.user = history.state.user || JSON.parse(localStorage.getItem('user') || '{}');
-    this.profileImage = '../assets/profilePictures/profile_1.png';
+    this.getMangaLeaderboard();
+    this.getAnimeLeaderboard();
+  }
+
+  getMangaLeaderboard() {
+    this.http.get('http://localhost:3000/api/getMangaLeaderboard')
+      .subscribe({
+        next: (response: any) => {
+          console.log('Leaderboard de manga obtenido:', response);
+          this.mangaLeaderboard = response.leaderboard;
+        },
+        error: (error) => {
+          console.error('Error al obtener el leaderboard de manga:', error);
+        }
+      });
+  }
+
+  getAnimeLeaderboard() {
+    this.http.get('http://localhost:3000/api/getAnimeLeaderboard')
+      .subscribe({
+        next: (response: any) => {
+          console.log('Leaderboard de anime obtenido:', response);
+          this.animeLeaderboard = response.leaderboard;
+        },
+        error: (error) => {
+          console.error('Error al obtener el leaderboard de anime:', error);
+        }
+      });
   }
 
   selectMode(mode: 'Manga' | 'Anime') {
@@ -53,20 +65,5 @@ export class StatsComponent implements OnInit {
 
   getCurrentLeaderboard(): LeaderboardEntry[] {
     return this.selectedMode === 'Manga' ? this.mangaLeaderboard : this.animeLeaderboard;
-  }
-
-  goToHome() {
-    console.log('Navegando a Home');
-    this.router.navigate(['/home']);
-  }
-
-  goToStats() {
-    console.log('Navegando a Stats');
-    this.router.navigate(['/stats']);
-  }
-
-  goToSettings() {
-    console.log('Navegando a Settings');
-    this.router.navigate(['/settings']);
   }
 }

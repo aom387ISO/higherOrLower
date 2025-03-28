@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const ProfilePicture = require('../models/ProfilePicture');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
-// POST /api/register - Registro de usuario
 router.post('/register', async (req, res) => {
     try {
         console.log('POST /api/register');
@@ -17,21 +16,17 @@ router.post('/register', async (req, res) => {
             });
         }
         console.log('Registrando usuario:', username, email, password);
-        /*
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
+        
+        console.log('Iniciando hash de la contraseña...');
+        const hashedPassword = await bcrypt.hash(password, 10);
+        console.log('Contraseña hasheada:', hashedPassword);
 
-        const newUser = new User({
-            username,
-            email,
-            password: hashedPassword
-        });
-        */
+
        console.log("Creando usuario")
         const newUser = new User({
             username,
             email,
-            password: password
+            password: hashedPassword
         });
         console.log("Usuario creado")
         const savedUser = await newUser.save();
