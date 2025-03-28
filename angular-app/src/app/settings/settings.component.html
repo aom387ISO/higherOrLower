@@ -19,8 +19,8 @@
                 </div>                
                 <h2>¡Nos alegra verte, <span id="username">{{ user?.username || 'usuario extraviado' }}</span>!</h2>
                 <div class="email-container">
-                    <p id="score">¡Tu mejor puntuación en <strong>anime</strong> hasta ahora es 10!</p>
-                    <p id="score">¡Tu mejor puntuación en <strong>manga</strong> hasta ahora es 10!</p>
+                    <p id="score">Tu mejor puntuación en <strong>anime</strong> hasta ahora es {{ bestAnimeScore }}.</p>
+                    <p id="score">Tu mejor puntuación en <strong>manga</strong> hasta ahora es {{ bestMangaScore }}.</p>
                 </div>
             </div>
 
@@ -28,18 +28,18 @@
             <div *ngIf="showPasswordPopup" class="popup" (click)="closePasswordSettings()">
                 <div class="popup-content-password" (click)="$event.stopPropagation()">
                     <h3>Cambiar Contraseña</h3>
-                    <form id="changePasswordForm">
+                    <form id="changePasswordForm" (ngSubmit)="updatePassword()">
                         <div class="form-group">
                             <label for="currentPassword">Contraseña Actual:</label>
-                            <input type="password" id="currentPassword" name="currentPassword" required>
+                            <input type="password" id="currentPassword" name="currentPassword" [(ngModel)]="currentPassword" required maxlength="30">
                         </div>
                         <div class="form-group">
                             <label for="newPassword">Nueva Contraseña:</label>
-                            <input type="password" id="newPassword" name="newPassword" required>
+                            <input type="password" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required maxlength="30">
                         </div>
                         <div class="form-group">
                             <label for="repeatPassword">Repetir Contraseña:</label>
-                            <input type="password" id="repeatPassword" name="repeatPassword" required>
+                            <input type="password" id="repeatPassword" name="repeatPassword" [(ngModel)]="repeatPassword" required maxlength="30">
                         </div>
                         <button type="submit" class="submit-button">Actualizar Contraseña</button>
                     </form>

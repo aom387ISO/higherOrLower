@@ -25,6 +25,10 @@
       <p class="message" *ngIf="gameScore !== 0 || gameOver">{{ message }}</p>
     </div>
 
+    <div class="best-score">
+      <p *ngIf="bestScore > 0 && user.username">Mejor puntuación: {{ bestScore }}</p>
+    </div>
+
     <div class="game-over-options" *ngIf="gameOver && revealScore">
       <button class="start-button restart-button" (click)="restartGame()">Reiniciar</button>
       <button class="start-button exit-button" (click)="exitGame()">Salir</button>

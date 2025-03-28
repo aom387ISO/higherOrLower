@@ -6,9 +6,10 @@ const initializeDatabase = require('./mongo-init');
 const registerRouter = require('./endpoints/register');
 const loginRouter = require('./endpoints/login');
 const changeIconRouter = require('./endpoints/changeIcon');
+const changePasswordRouter = require('./endpoints/changePassword');
 const updateMangaScoreRouter = require('./endpoints/updateMangaScore');
 const updateAnimeScoreRouter = require('./endpoints/updateAnimeScore');
-//const changePasswordRouter = require('./endpoints/changePassword');
+const getUserScoreRouter = require('./endpoints/getUserScore');
 const cors = require('cors');
 
 app.use(cors({
@@ -29,7 +30,8 @@ app.use('/api', loginRouter);
 app.use('/api', changeIconRouter);
 app.use('/api', updateMangaScoreRouter);
 app.use('/api', updateAnimeScoreRouter);
-//app.use('/api', changePasswordRouter);
+app.use('/api', getUserScoreRouter);
+app.use('/api', changePasswordRouter);
 
 async function startServer() {
     try {

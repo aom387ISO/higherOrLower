@@ -42,6 +42,18 @@ export class HomeComponent implements OnInit {
   gameType: 'manga' | 'anime' = 'manga';
   gameOver: boolean = false;
   revealScore: boolean = false;
+  bestScore: number = 0;
+
+  private successMessages: string[] = [
+    '¡Correcto!',
+    '¡Bien hecho!',
+    '¡Sigue así!',
+    '¡Genial!',
+    '¡Buen ojo!',
+    '¡Perfecto!',
+    '¡Estás en racha!',
+    '¡Impresionante!'
+  ];
 
   ngOnInit(): void {
     console.log('Home Component');
@@ -57,6 +69,21 @@ export class HomeComponent implements OnInit {
     this.gameOver = false;
     this.revealScore = false;
     this.loadContent();
+
+    if (this.user.username) {
+      this.http.get(`http://localhost:3000/api/getUserScore?username=${this.user.username}`)
+      .subscribe({
+        next: (response: any) => {
+          const scores = response.scores;
+          this.bestScore = this.gameType === 'manga' ? scores.bestMangaScore : scores.bestAnimeScore;
+          console.log(`Mejor puntuación en ${this.gameType}: ${this.bestScore}`);
+        },
+        error: (error) => {
+          console.error('Error al obtener la mejor puntuación:', error);
+          this.bestScore = 0;
+        }
+      });
+    }
   }
 
   loadContent() {
@@ -102,7 +129,14 @@ export class HomeComponent implements OnInit {
     if ((selected === 'manga' && score1 >= score2) || 
         (selected === 'manga2' && score2 > score1)) {
       this.gameScore++;
-      this.message = '¡Correcto!';
+        
+      this.message = this.successMessages[Math.floor(Math.random() * this.successMessages.length)];
+          
+      if (this.gameScore > this.bestScore) {
+        this.bestScore = this.gameScore;
+        console.log(`Nuevo mejor puntaje en ${this.gameType}: ${this.bestScore}`);
+      }
+
       this.manga = this.manga2;
       this.manga2 = null;
       this.loadSecondContent();
@@ -117,17 +151,18 @@ export class HomeComponent implements OnInit {
         score: this.gameScore
       };
   
-      this.http.put(`http://localhost:3000/api${endpoint}`, updateData)
-      .subscribe({
-        next: (response: any) => {
-          console.log('Puntuación actualizada:', response);
-        },
-        error: (error) => {
-          console.error('Error al actualizar la puntuación:', error);
-          alert(error.error.message || 'Error al actualizar la puntuación');
-        }
-      });
-
+      if(this.user.username) {
+        this.http.put(`http://localhost:3000/api${endpoint}`, updateData)
+        .subscribe({
+          next: (response: any) => {
+            console.log('Puntuación actualizada:', response);
+          },
+          error: (error) => {
+            console.error('Error al actualizar la puntuación:', error);
+            alert(error.error.message || 'Error al actualizar la puntuación');
+          }
+        });
+      }
       setTimeout(() => {
         this.revealScore = true;
       }, 1000);

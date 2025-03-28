@@ -31,6 +31,9 @@ export class SidebarComponent implements OnInit {
 
   goToSettings() {
     console.log('user', this.user);
+    if(!this.user.username) {
+      return;
+    }
     this.router.navigate(['/settings'], { state: { user: this.user } });
   }
 }

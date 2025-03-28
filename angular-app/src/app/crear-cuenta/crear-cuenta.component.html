@@ -11,10 +11,10 @@
         </div>
         <div class="right-section">
             <form>
-                <input type="text" id="username" placeholder="Nombre de Usuario" [(ngModel)]="username" name="username">
-                <input type="email" id="email" placeholder="Correo Electrónico" [(ngModel)]="email" name="email">
-                <input type="password" id="password" placeholder="Contraseña" [(ngModel)]="password" name="password">
-                <input type="password" id="password2" placeholder="Repetir contraseña" [(ngModel)]="password2" name="password2">
+                <input type="text" id="username" placeholder="Nombre de Usuario" [(ngModel)]="username" name="username" maxlength="20">
+                <input type="email" id="email" placeholder="Correo Electrónico" [(ngModel)]="email" name="email" maxlength="50">
+                <input type="password" id="password" placeholder="Contraseña" [(ngModel)]="password" name="password" maxlength="30">
+                <input type="password" id="password2" placeholder="Repetir contraseña" [(ngModel)]="password2" name="password2" maxlength="30">
                 <div class="form-actions">
                   <a href="/" class="crear-cuenta">Iniciar sesión</a>
                   <button type="button" (click)="register()">Registrarse</button>

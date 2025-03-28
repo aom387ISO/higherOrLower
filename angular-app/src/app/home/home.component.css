@@ -102,6 +102,23 @@
   border-radius: 5px;
 }
 
+.best-score {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.best-score p {
+  color: #ffffff;
+  margin: 5px 0;
+  font-size: 16px;
+  background-color: #0076d0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 .start-button {
   background-color: #0076d0;
   color: #ffffff;
