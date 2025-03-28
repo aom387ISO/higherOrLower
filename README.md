@@ -28,3 +28,23 @@ cd higherOrLower
 ```bash
 docker-compose up --build
 ```
+
+## Funcionalidades principales
+
+- **Iniciar sesión y registrarse**
+![landingPage](./media/landingPage.gif)
+
+- **Elección de modalidad**
+![home](./media/home.png)
+
+- **Juego en funcionamiento**
+![gameInProgress](./media/gameInProgress.gif)
+
+- **Página de ajustes**
+![profilePage](./media/profilePage.png)
+
+- **Con cambio de foto de perfil**
+![changeIcon](./media/changeIcon.gif)
+
+- **Tabla de clasificación con los 5 mejores jugadores en cada modo**
+![leaderboard](./media/leaderboard.gif)
