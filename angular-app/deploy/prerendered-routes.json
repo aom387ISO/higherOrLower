@@ -1,0 +1,9 @@
+{
+  "routes": {
+    "/higherOrLower": {},
+    "/higherOrLower/crear-cuenta": {},
+    "/higherOrLower/home": {},
+    "/higherOrLower/settings": {},
+    "/higherOrLower/stats": {}
+  }
+}
