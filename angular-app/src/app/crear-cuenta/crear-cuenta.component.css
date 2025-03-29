@@ -251,7 +251,55 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75); 
+    background-color: rgba(0, 0, 0, 0.70); 
     z-index: 1; /* Asegura que esté encima del fondo y no las letras*/
 }
 
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: #3a3a3a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width:40%;
+    max-width: 400px;
+   /* width: 300px;*/
+  }
+
+  .close-button {
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 15px 20px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background: #0056b3;
+}
+
+.popup-content h3{
+    color: #ffffff; 
+    margin-bottom: 15px;
+}
+.popup-content p {
+  color: #ffffff; 
+  margin-bottom: 20px;
+}

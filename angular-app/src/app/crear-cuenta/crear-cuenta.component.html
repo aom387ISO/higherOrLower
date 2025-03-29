@@ -23,3 +23,11 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="showPopup" class="popup" (click)="closePopup()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+        <h3>¡Registro exitoso!</h3>
+        <p>Te damos la bienvenida <strong>{{ user?.username }}</strong>.</p>
+        <button class="close-button" (click)="closePopup()">Continuar</button>
+    </div>
+</div>

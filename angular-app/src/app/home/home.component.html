@@ -8,13 +8,13 @@
 
   <div *ngIf="gameStart || gameOver" class="game-container">
     <div class="manga-card" @mangaAnimation (click)="chooseManga('manga')" [class.disabled]="gameOver">
-      <h2>{{ (manga?.title?.length > 45) ? (manga?.title | slice:0:50) + '...' : manga?.title || 'Cargando...' }}</h2>
+      <h2>{{ (manga?.title?.length > 40) ? (manga?.title | slice:0:40) + '...' : manga?.title || 'Cargando...' }}</h2>
       <img [src]="manga?.images?.jpg?.image_url" alt="Manga" *ngIf="manga?.images">
       <p>Puntuación: {{ manga?.score || '???' }}</p>
     </div>
 
     <div class="manga-card" @mangaAnimation (click)="chooseManga('manga2')" [class.disabled]="gameOver">
-      <h2>{{ (manga2?.title?.length > 45) ? (manga2?.title | slice:0:50) + '...' : manga2?.title || 'Cargando...' }}</h2>
+      <h2>{{ (manga2?.title?.length > 40) ? (manga2?.title | slice:0:40) + '...' : manga2?.title || 'Cargando...' }}</h2>
       <img [src]="manga2?.images?.jpg?.image_url" alt="Manga 2" *ngIf="manga2?.images">
       <p *ngIf="!gameOver || !revealScore">Puntuación: ???</p>
       <p *ngIf="gameOver && revealScore">Puntuación: {{ manga2?.score || '???' }}</p>
