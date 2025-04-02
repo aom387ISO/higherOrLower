@@ -25,6 +25,10 @@
       <p class="message" *ngIf="gameScore !== 0 || gameOver">{{ message }}</p>
     </div>
 
+    <div class="game-question">
+      <p>¿Qué serie tiene más puntuación?</p>
+    </div>
+
     <div class="best-score">
       <p *ngIf="bestScore > 0 && user.username">Mejor puntuación: {{ bestScore }}</p>
     </div>
