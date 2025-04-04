@@ -129,10 +129,12 @@ export class HomeComponent implements OnInit {
           const limitedMangas = mangas.slice(0, 10);
           console.log('Limited mangas:', limitedMangas);
         
-          const validManga = limitedMangas.find((manga : any) => 
+          const validManga = limitedMangas
+          .filter((manga : any) => 
             manga.score !== null && manga.score !== undefined && manga.score >= 7.2 &&
             (!this.manga || (this.manga.mal_id !== manga.mal_id && this.manga.score !== manga.score))
-          );
+          )
+          .sort(() => Math.random() - 0.5)[0];
         
           if (!validManga) {
             this.loadSecondContent();
@@ -154,11 +156,13 @@ export class HomeComponent implements OnInit {
           const limitedMangas = mangas.slice(0, 10);
           console.log('Limited mangas:', limitedMangas);
         
-          const validManga = limitedMangas.find((manga : any) => 
+          const validManga = limitedMangas
+          .filter((manga : any) => 
             manga.score !== null && manga.score !== undefined && manga.score >= 7.2 &&
             (!this.manga || (this.manga.mal_id !== manga.mal_id && this.manga.score !== manga.score))
-          );
-        
+          )
+          .sort(() => Math.random() - 0.5)[0];
+          
           if (!validManga) {
             this.loadSecondContent();
             return;
