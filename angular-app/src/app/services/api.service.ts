@@ -19,4 +19,13 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/anime?page=${randomPage}&order_by=score&sort=desc`);
   }
 
+  getScrappedManga(series: any) {
+    console.log(`${this.apiUrl}/manga?q=${encodeURIComponent(series.nombre)}`);
+    return this.http.get(`${this.apiUrl}/manga?q=${encodeURIComponent(series.nombre)}`);
+  }
+
+  getScrappedAnime(series: any) {
+    return this.http.get(`${this.apiUrl}/anime?q=${encodeURIComponent(series.nombre)}`);
+  }
+
 }

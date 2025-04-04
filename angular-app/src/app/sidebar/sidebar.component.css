@@ -83,7 +83,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: 10px 0;
+    padding: 12px 0;
     border-right: none;
     border-bottom: 1px solid #6f6f6f;
     display: flex;
@@ -103,7 +103,7 @@
     }
   
     li {
-      margin: 0 10px;
+      margin: 0 20px;
     }
 
   

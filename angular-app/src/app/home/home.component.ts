@@ -43,6 +43,8 @@ export class HomeComponent implements OnInit {
   gameOver: boolean = false;
   revealScore: boolean = false;
   bestScore: number = 0;
+  mangaPool: any[] = [];
+  animePool: any[] = [];
 
   private successMessages: string[] = [
     '¡Correcto!',
@@ -68,6 +70,7 @@ export class HomeComponent implements OnInit {
     this.gameScore = 0;
     this.gameOver = false;
     this.revealScore = false;
+    this.loadMyData(),
     this.loadContent();
 
     if (this.user.username) {
@@ -84,6 +87,15 @@ export class HomeComponent implements OnInit {
         }
       });
     }
+  }
+
+  loadMyData() {
+    this.http.get('/assets/scrappedData/mangaData.json').subscribe((response: any) => {
+      this.mangaPool = response;
+    });
+    this.http.get('/assets/scrappedData/animeData.json').subscribe((response: any) => {
+      this.animePool = response;
+    });
   }
 
   loadContent() {
@@ -103,6 +115,60 @@ export class HomeComponent implements OnInit {
   }
 
   loadSecondContent() {
+
+    if(this.gameScore % 5 === 0 && this.gameScore !== 0){
+      if (this.gameType === 'manga') {
+        this.apiService.getScrappedManga(this.getRandomSeries(this.mangaPool)).subscribe((response: any) => {
+          const mangas = response.data;
+        
+          if (!mangas || mangas.length === 0) {
+            this.loadSecondContent();
+            return;
+          }
+        
+          const limitedMangas = mangas.slice(0, 10);
+          console.log('Limited mangas:', limitedMangas);
+        
+          const validManga = limitedMangas.find((manga : any) => 
+            manga.score !== null && manga.score !== undefined && manga.score >= 7.2 &&
+            (!this.manga || (this.manga.mal_id !== manga.mal_id && this.manga.score !== manga.score))
+          );
+        
+          if (!validManga) {
+            this.loadSecondContent();
+            return;
+          }
+        
+          this.manga2 = validManga;
+          console.log('Manga 2 definitivo:', this.manga2);
+        });
+      } else {
+        this.apiService.getScrappedAnime(this.getRandomSeries(this.animePool)).subscribe((response: any) => {
+          const mangas = response.data;
+        
+          if (!mangas || mangas.length === 0) {
+            this.loadSecondContent();
+            return;
+          }
+        
+          const limitedMangas = mangas.slice(0, 10);
+          console.log('Limited mangas:', limitedMangas);
+        
+          const validManga = limitedMangas.find((manga : any) => 
+            manga.score !== null && manga.score !== undefined && manga.score >= 7.2 &&
+            (!this.manga || (this.manga.mal_id !== manga.mal_id && this.manga.score !== manga.score))
+          );
+        
+          if (!validManga) {
+            this.loadSecondContent();
+            return;
+          }
+        
+          this.manga2 = validManga;
+          console.log('Manga 2 definitivo:', this.manga2);
+        });
+      }
+    }else{
     if (this.gameType === 'manga') {
       this.apiService.getRandomManga().subscribe((response) => {
         const mangas = response.data;
@@ -120,6 +186,7 @@ export class HomeComponent implements OnInit {
         }
       });
     }
+  }
   }
 
   chooseManga(selected: 'manga' | 'manga2') {
@@ -176,5 +243,11 @@ export class HomeComponent implements OnInit {
   exitGame() {
     this.gameStart = false;
     this.gameOver = false;
+  }
+
+  getRandomSeries(pool: any[]): any {
+    const randomItem = pool[Math.floor(Math.random() * pool.length)];
+    console.log('Serie aleatoria:', randomItem);
+    return { nombre: randomItem.nombre };
   }
 }
