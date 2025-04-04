@@ -73,5 +73,83 @@
     object-fit: cover;
 
 }
+
 }
 
+@media (max-width: 768px) {
+  :host {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    border-right: none;
+    border-bottom: 1px solid #6f6f6f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+  
+  
+    nav ul {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  
+    li {
+      margin: 0 10px;
+    }
+
+  
+  .sidebar-button {
+    width: 40px; 
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    pointer-events: auto;
+  }
+  
+  .sidebar-button.home {
+    background-image: url('../../../public/assets/static/home_icon_white.png');
+      }
+  
+  .sidebar-button.stats {
+    background-image: url('../../../public/assets/static/stats_icon_white.png');
+  }
+  
+  .sidebar-button.settings {
+    background-image: url('../../../public/assets/static/settings_icon_white.png');
+  }
+
+  .sidebar-button.logout {
+    background-image: url('../../../public/assets/static/door_icon_white.png');
+  }
+
+  .sidebar-button:hover {
+    transform: scale(1.1);
+  }
+
+  .profile-container {
+    margin-bottom: 0; /* Elimina el margen inferior del contenedor de perfil */
+  }
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+
+  }
+}
+}

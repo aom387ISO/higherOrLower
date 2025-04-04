@@ -69,7 +69,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90%;
+  max-width: 80%;
 }
 
 .manga-card p {
@@ -89,6 +89,106 @@
   z-index: 1;
   max-width: 90%;
   word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .manga-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0076d0;
+    padding: 9px;
+    cursor: pointer;
+    background-color: #424242;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+  }
+  
+  .manga-card:hover {
+    transform: scale(1.03);
+    border: 9px solid #0056b3;
+  }
+  
+  .manga-card.disabled {
+    pointer-events: none; /* Deshabilita clics */
+    opacity: 0.7; 
+  }
+  
+  .manga-card img {
+    width: 100%;
+    height: auto;
+    max-height: 80%;
+    border-radius: 5px;
+    object-fit: contain;
+  }
+  
+  .manga-card h2 {
+    font-size: 18px;
+    color: #ffffff;
+    margin: 5px 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+  }
+  
+  .manga-card p {
+    color: #ffffff;
+    background-color: #0076d0;
+    border: 2px solid #0076d0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+
+  .game-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    top: 10%;
+  }
+
+  .game-info {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  
+  .message {
+    font-size: 17px;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .game-info p {
+    color: #ffffff;
+    margin: 5px 0;
+    font-size: 16px;
+    background-color: #0076d0;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
 }
 
 .game-info {
