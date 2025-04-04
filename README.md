@@ -28,6 +28,13 @@ cd higherOrLower
 ```bash
 docker-compose up --build
 ```
+## Patrón de Diseño
+
+El juego sigue el patrón *Game Loop*, un ciclo continuo donde se actualiza el estado del juego y se procesa la lógica principal. A continuación, se muestra el flujo de ejecución:
+
+<div align="center">
+  <img src="./media/diagrama.png" alt="Diagrama" />
+</div>                    
 
 ## Funcionalidades principales
 
